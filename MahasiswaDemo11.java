@@ -1,70 +1,53 @@
 public class MahasiswaDemo11 {
     public static void main(String[] args) {
         System.out.println("========================================");
-        System.out.println("Program Demo Mahasiswa dan Mahasiswa Berprestasi");
+        System.out.println("Program Demo Mahasiswa dengan Sequential Search");
         System.out.println("========================================\n");
         
-        // Buat mahasiswa reguler 1
-        System.out.println("--- Mahasiswa Reguler ---");
-        Mahasiswa11 mahasiswa1 = new Mahasiswa11("12345678", "Ahmad Ridha", "XII-A", 3.2);
-        mahasiswa1.tampilkanInfo();
-        System.out.println("Siap Lulus: " + mahasiswa1.siapLulus());
-        System.out.println("\n");
+        // Buat object MahasiswaBerprestasi11 untuk mengelola daftar mahasiswa
+        MahasiswaBerprestasi11 daftarMahasiswa = new MahasiswaBerprestasi11();
         
-        // Buat mahasiswa reguler 2
-        System.out.println("--- Mahasiswa Reguler 2 ---");
-        Mahasiswa11 mahasiswa2 = new Mahasiswa11("87654321", "Siti Nurhaliza", "XII-B", 3.8);
-        mahasiswa2.tampilkanInfo();
-        System.out.println("Siap Lulus: " + mahasiswa2.siapLulus());
-        System.out.println("\n");
+        // Buat object Mahasiswa11
+        Mahasiswa11 mhs1 = new Mahasiswa11("11223344", "Budi Santoso", "XII-A", 3.9);
+        Mahasiswa11 mhs2 = new Mahasiswa11("87654321", "Siti Nurhaliza", "XII-B", 3.8);
+        Mahasiswa11 mhs3 = new Mahasiswa11("12345678", "Ahmad Ridha", "XII-A", 3.2);
+        Mahasiswa11 mhs4 = new Mahasiswa11("55667788", "Nur Azizah", "XII-C", 3.7);
+        Mahasiswa11 mhs5 = new Mahasiswa11("99887766", "Rina Wijaya", "XII-B", 3.5);
         
-        // Buat mahasiswa berprestasi 1
-        System.out.println("--- Mahasiswa Berprestasi ---");
-        MahasiswaBerprestasi11 mahasiswaBerprestasi1 = new MahasiswaBerprestasi11(
-            "11223344", 
-            "Budi Santoso", 
-            "XII-A", 
-            3.9, 
-            92.5,
-            "Beasiswa Penuh LPDP"
-        );
+        // Tambah mahasiswa ke dalam daftar
+        System.out.println("--- Menambah Mahasiswa ---");
+        daftarMahasiswa.tambah(mhs1);
+        daftarMahasiswa.tambah(mhs2);
+        daftarMahasiswa.tambah(mhs3);
+        daftarMahasiswa.tambah(mhs4);
+        daftarMahasiswa.tambah(mhs5);
+        System.out.println();
         
-        mahasiswaBerprestasi1.tampilkanInfo();
-        System.out.println("Nilai Prestasi: " + mahasiswaBerprestasi1.nilaiPrestasi);
-        System.out.println("Beasiswa: " + mahasiswaBerprestasi1.beasiswa);
-        System.out.println("\n");
+        // Tampilkan semua mahasiswa
+        daftarMahasiswa.tampil();
         
-        // Buat mahasiswa berprestasi 2
-        System.out.println("--- Mahasiswa Berprestasi 2 ---");
-        MahasiswaBerprestasi11 mahasiswaBerprestasi2 = new MahasiswaBerprestasi11(
-            "55667788", 
-            "Nur Azizah", 
-            "XII-B", 
-            3.7, 
-            88.0,
-            "Beasiswa Akademik"
-        );
+        // Lakukan sequential search
+        System.out.println("\n--- Pencarian Sequential Search ---");
+        double nilaiCari = 3.8;
+        System.out.println("Mencari mahasiswa dengan IPK: " + nilaiCari);
+        int posisi = daftarMahasiswa.sequentialSearch(nilaiCari);
+        daftarMahasiswa.tampilPoisisi(nilaiCari, posisi);
+        daftarMahasiswa.tampilDataSearch(nilaiCari, posisi);
         
-        mahasiswaBerprestasi2.tampilkanInfo();
-        System.out.println("Nilai Prestasi: " + mahasiswaBerprestasi2.nilaiPrestasi);
-        System.out.println("Beasiswa: " + mahasiswaBerprestasi2.beasiswa);
-        System.out.println("\n");
+        // Pencarian kedua
+        System.out.println("\n--- Pencarian Sequential Search Kedua ---");
+        double nilaiCari2 = 3.2;
+        System.out.println("Mencari mahasiswa dengan IPK: " + nilaiCari2);
+        int posisi2 = daftarMahasiswa.sequentialSearch(nilaiCari2);
+        daftarMahasiswa.tampilPoisisi(nilaiCari2, posisi2);
+        daftarMahasiswa.tampilDataSearch(nilaiCari2, posisi2);
         
-        // Tampilkan ringkasan
-        System.out.println("========================================");
-        System.out.println("Ringkasan Data Mahasiswa");
-        System.out.println("========================================");
-        System.out.println(mahasiswa1);
-        System.out.println(mahasiswa2);
-        System.out.println(mahasiswaBerprestasi1);
-        System.out.println(mahasiswaBerprestasi2);
-        System.out.println("========================================\n");
-        
-        // Cek kelayakan kelulusan
-        System.out.println("Cek Kelayakan Kelulusan:");
-        System.out.println(mahasiswa1.nama + ": " + (mahasiswa1.siapLulus() ? "Siap Lulus" : "Belum Siap Lulus"));
-        System.out.println(mahasiswa2.nama + ": " + (mahasiswa2.siapLulus() ? "Siap Lulus" : "Belum Siap Lulus"));
-        System.out.println(mahasiswaBerprestasi1.nama + ": " + (mahasiswaBerprestasi1.siapLulus() ? "Siap Lulus" : "Belum Siap Lulus"));
-        System.out.println(mahasiswaBerprestasi2.nama + ": " + (mahasiswaBerprestasi2.siapLulus() ? "Siap Lulus" : "Belum Siap Lulus"));
+        // Pencarian ketiga (tidak ditemukan)
+        System.out.println("\n--- Pencarian Sequential Search Ketiga ---");
+        double nilaiCari3 = 4.0;
+        System.out.println("Mencari mahasiswa dengan IPK: " + nilaiCari3);
+        int posisi3 = daftarMahasiswa.sequentialSearch(nilaiCari3);
+        daftarMahasiswa.tampilPoisisi(nilaiCari3, posisi3);
+        daftarMahasiswa.tampilDataSearch(nilaiCari3, posisi3);
     }
 }

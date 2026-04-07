@@ -1,50 +1,65 @@
-public class MahasiswaBerprestasi11 extends Mahasiswa11 {
-    // Atribut tambahan untuk mahasiswa berprestasi
-    public double nilaiPrestasi;
-    public String beasiswa;
-    private String[] penghargaan;
-    private int jumlahPenghargaan;
+public class MahasiswaBerprestasi11 {
+    // Atribut
+    private Mahasiswa11[] listMhs;
+    private int idx;
     
-    // Konstruktor default
+    // Konstruktor
     public MahasiswaBerprestasi11() {
+        listMhs = new Mahasiswa11[5];
+        idx = 0;
     }
     
-    // Konstruktor dengan parameter
-    public MahasiswaBerprestasi11(String nm, String name, String kls, double ip, 
-                                   double nilaiPrestasi, String beasiswa) {
-        super(nm, name, kls, ip);
-        this.nilaiPrestasi = nilaiPrestasi;
-        this.beasiswa = beasiswa;
-        this.penghargaan = new String[10];
-        this.jumlahPenghargaan = 0;
-    }
-    
-    // Metode untuk menambah penghargaan
-    public void tambahPenghargaan(String penghargaanBaru) {
-        if (jumlahPenghargaan < penghargaan.length) {
-            penghargaan[jumlahPenghargaan] = penghargaanBaru;
-            jumlahPenghargaan++;
-            System.out.println("Penghargaan '" + penghargaanBaru + "' berhasil ditambahkan!");
+    // Metode untuk menambah mahasiswa
+    public void tambah(Mahasiswa11 mhs) {
+        if (idx < listMhs.length) {
+            listMhs[idx] = mhs;
+            idx++;
+            System.out.println("Mahasiswa berhasil ditambahkan!");
         } else {
-            System.out.println("Kapasitas penghargaan penuh!");
+            System.out.println("Kapasitas array penuh!");
         }
     }
     
-    // Metode untuk menghitung skor prestasi
-    public double hitungSkorPrestasi() {
-        return (nilaiIpk * 0.5) + (nilaiPrestasi * 0.3) + (jumlahPenghargaan * 0.2);
+    // Metode untuk menampilkan semua mahasiswa
+    public void tampil() {
+        System.out.println("\n========== Daftar Mahasiswa ==========");
+        for (int i = 0; i < idx; i++) {
+            System.out.println((i + 1) + ". ");
+            listMhs[i].tampilkanInfo();
+            System.out.println();
+        }
     }
     
-    // Metode untuk mengecek apakah mahasiswa berprestasi
-    public boolean adalahBerprestasi() {
-        return nilaiIpk >= 3.5 && nilaiPrestasi >= 85;
+    // Metode sequential search berdasarkan nilai IPK
+    public int sequentialSearch(double cari) {
+        int posisi = -1;
+        for (int i = 0; i < idx; i++) {
+            if (listMhs[i].nilaiIpk == cari) {
+                posisi = i;
+                break;
+            }
+        }
+        return posisi;
     }
     
-    // Override metode tampilkanInfo
-    @Override
-    public void tampilkanInfo() {
-        super.tampilkanInfo();
-        System.out.println("Nilai Prestasi: " + nilaiPrestasi);
-        System.out.println("Beasiswa: " + beasiswa);
+    // Metode untuk menampilkan posisi
+    public void tampilPoisisi(double x, int pos) {
+        if (pos != -1) {
+            System.out.println("Data dengan nilai IPK " + x + " ditemukan!");
+            System.out.println("Posisi index: " + pos);
+        } else {
+            System.out.println("Data dengan nilai IPK " + x + " tidak ditemukan!");
+        }
+    }
+    
+    // Metode untuk menampilkan data dari hasil search
+    public void tampilDataSearch(double x, int pos) {
+        System.out.println("\n========== Hasil Pencarian ==========");
+        if (pos != -1) {
+            System.out.println("Data ditemukan pada posisi " + pos + ":");
+            listMhs[pos].tampilkanInfo();
+        } else {
+            System.out.println("Data dengan nilai IPK " + x + " tidak ditemukan dalam array!");
+        }
     }
 }
