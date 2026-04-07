@@ -17,10 +17,6 @@ public class Mahasiswa11 {
         this.nilaiIpk = ip;
     }
     
-    // Metode untuk mengecek kelayakan kelulusan
-    public boolean siapLulus() {
-        return nilaiIpk >= 2.0;
-    }
     
     // Metode untuk menampilkan informasi
     public void tampilkanInfo() {
