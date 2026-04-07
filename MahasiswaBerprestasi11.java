@@ -30,18 +30,6 @@ public class MahasiswaBerprestasi11 {
         }
     }
     
-    // Metode sequential search berdasarkan nilai IPK
-    public int sequentialSearching(double cari) {
-        int posisi = -1;
-        for (int i = 0; i < idx; i++) {
-            if (listMhs[i].nilaiIpk == cari) {
-                posisi = i;
-                break;
-            }
-        }
-        return posisi;
-    }
-    
     // Metode untuk menampilkan posisi
     public void tampilPoisisi(double x, int pos) {
         if (pos != -1) {
@@ -62,4 +50,34 @@ public class MahasiswaBerprestasi11 {
             System.out.println("Data dengan nilai IPK " + x + " tidak ditemukan");
         }
     }
+
+    // Metode untuk menampilkan data menggunakan sequential search berdasarkan nilai IPK
+    public int sequentialSearching(double cari) {
+        int posisi = -1;
+        for (int i = 0; i < idx; i++) {
+            if (listMhs[i].nilaiIpk == cari) {
+                posisi = i;
+                break;
+            }
+        }
+        return posisi;
+    }
+    
+
+    // Metode untuk menampilkan data menggunakan binary search berdasarkan nilai IPK
+    int findBinarySearch(double cari, int left, int right) {
+        int mid;
+        if (right >= left) {
+             mid = (left + right) / 2;
+            if (cari == listMhs[mid].nilaiIpk) {
+                return (mid);
+            }
+            else if (listMhs[mid].nilaiIpk > cari) {
+                return findBinarySearch(cari, left, mid - 1);
+            } else {
+            return findBinarySearch(cari, mid + 1, right);
+            }
+        }
+        return -1;
+    }   
 }
