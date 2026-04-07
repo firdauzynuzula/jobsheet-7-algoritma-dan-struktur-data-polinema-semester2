@@ -24,8 +24,6 @@ public class MahasiswaDemo11 {
             System.out.print("Nilai IPK: ");
             String ipk = sc.nextLine();
             double ipkValue = Double.parseDouble(ipk);
-            sc.nextLine();
-
 
             list.tambah(new Mahasiswa11(nim, nama, kelas, ipkValue));
             System.out.println();
@@ -34,28 +32,19 @@ public class MahasiswaDemo11 {
         // Tampilkan semua mahasiswa
         list.tampil();
         
+
         // Lakukan sequential search
         System.out.println("\n--- Pencarian Sequential Search ---");
-        double nilaiCari = 3.8;
+        System.out.print("Masukkan nilai IPK yang ingin dicari: ");
+        double nilaiCari = sc.nextDouble();
         System.out.println("Mencari mahasiswa dengan IPK: " + nilaiCari);
+
+
+
+        System.out.println("\n--- Hasil Pencarian meggunakan sequential searching ---");
         int posisi = list.sequentialSearching(nilaiCari);
         list.tampilPoisisi(nilaiCari, posisi);
         list.tampilDataSearch(nilaiCari, posisi);
         
-        // Pencarian kedua
-        System.out.println("\n--- Pencarian Sequential Search Kedua ---");
-        double nilaiCari2 = 3.2;
-        System.out.println("Mencari mahasiswa dengan IPK: " + nilaiCari2);
-        int posisi2 = list.sequentialSearching(nilaiCari2);
-        list.tampilPoisisi(nilaiCari2, posisi2);
-        list.tampilDataSearch(nilaiCari2, posisi2);
-        
-        // Pencarian ketiga (tidak ditemukan)
-        System.out.println("\n--- Pencarian Sequential Search Ketiga ---");
-        double nilaiCari3 = 4.0;
-        System.out.println("Mencari mahasiswa dengan IPK: " + nilaiCari3);
-        int posisi3 = list.sequentialSearching(nilaiCari3);
-        list.tampilPoisisi(nilaiCari3, posisi3);
-        list.tampilDataSearch(nilaiCari3, posisi3);
     }
 }
