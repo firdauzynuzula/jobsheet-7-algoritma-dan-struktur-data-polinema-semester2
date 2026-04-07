@@ -31,7 +31,7 @@ public class MahasiswaBerprestasi11 {
     }
     
     // Metode sequential search berdasarkan nilai IPK
-    public int sequentialSearch(double cari) {
+    public int sequentialSearching(double cari) {
         int posisi = -1;
         for (int i = 0; i < idx; i++) {
             if (listMhs[i].nilaiIpk == cari) {
@@ -59,7 +59,7 @@ public class MahasiswaBerprestasi11 {
             System.out.println("Data ditemukan pada posisi " + pos + ":");
             listMhs[pos].tampilkanInfo();
         } else {
-            System.out.println("Data dengan nilai IPK " + x + " tidak ditemukan dalam array!");
+            System.out.println("Data dengan nilai IPK " + x + " tidak ditemukan");
         }
     }
 }
